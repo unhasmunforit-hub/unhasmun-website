@@ -1,4 +1,4 @@
-# 🌐 Hasanuddin Model United Nations (MUN) Website
+# 🌐 UNHAS Model United Nations (MUN) Website
 
 Repository resmi untuk website Hasanuddin Model United Nations. Website ini berfungsi sebagai pusat informasi, publikasi berita/artikel, dan *landing page* utama organisasi.
 
