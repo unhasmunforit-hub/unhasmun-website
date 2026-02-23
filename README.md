@@ -8,7 +8,7 @@ Repository resmi untuk website Hasanuddin Model United Nations. Website ini berf
 
 Website ini dibangun dengan arsitektur **Headless CMS** untuk performa tinggi dan kemudahan pengelolaan konten oleh tim non-teknis.
 
-- **URL Produksi:** [https://hasanuddinmun.com](https://unhasmun.org) 
+- **URL Produksi:** [https://unhasmun.org](https://unhasmun.org) 
 - **Status:** 🟢 Active / Maintained
 
 ## 🛠️ Teknologi yang Digunakan
