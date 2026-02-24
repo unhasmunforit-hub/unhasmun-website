@@ -31,4 +31,5 @@ Ikuti langkah ini untuk menjalankan proyek di komputer lokal Anda:
 ### 1. Clone Repository
 ```bash
 git clone [https://github.com/hasanuddin-mun-tech/website-2026.git](https://github.com/hasanuddin-mun-tech/website-2026.git)
-cd website-2026
+cd my-app
+npm run dev
