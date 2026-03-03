@@ -1,0 +1,6 @@
+# Analysis and documentation files
+*.md
+!README.md
+
+# Resolved files
+*.resolved
