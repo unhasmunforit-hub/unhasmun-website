@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutSection() {
   return (
@@ -55,8 +56,9 @@ export default function AboutSection() {
           </p>
 
           <div className="mt-2">
-            <button
-              className="flex items-center gap-2 md:gap-3 text-white font-semibold px-5 py-2.5 md:px-6 md:py-3 rounded-lg transition-all hover:opacity-90 active:scale-95 text-sm md:text-base"
+            <Link
+              href="/about#committee"
+              className="inline-flex items-center gap-2 md:gap-3 text-white font-semibold px-5 py-2.5 md:px-6 md:py-3 rounded-lg transition-all hover:opacity-90 active:scale-95 text-sm md:text-base"
               style={{ background: "linear-gradient(135deg, #8b1616 0%, #6b0f0f 100%)" }}
             >
               Our Committee
@@ -65,7 +67,7 @@ export default function AboutSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
               </span>
-            </button>
+            </Link>
           </div>
         </div>
 

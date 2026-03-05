@@ -1,20 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://unhasmun.com"),
   title: "UNHAS MUN 2026",
   description: "University of Hasanuddin Model United Nations 2026 - Shape the future behind the table",
   icons: {
@@ -51,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-mun-cream`}
+        className={`${poppins.variable} antialiased bg-mun-cream`}
       >
         <Navbar />
         <main className="min-h-screen font-sans">
