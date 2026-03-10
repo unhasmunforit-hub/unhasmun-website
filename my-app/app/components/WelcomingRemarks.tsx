@@ -55,7 +55,7 @@ export default function WelcomingRemarks() {
         <div style={s.cardFront as React.CSSProperties} className="wr-card-front">
 
           {/* Quotation mark top-right */}
-          <span style={s.quote as React.CSSProperties}>"</span>
+          <span style={s.quote as React.CSSProperties}>&quot;</span>
 
           {/* Profile | Divider | Letter */}
           <div style={s.inner as React.CSSProperties} className="wr-inner">

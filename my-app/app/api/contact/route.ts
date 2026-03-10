@@ -18,8 +18,7 @@ export async function POST(request: Request) {
 
         // Send email using Resend
         const data = await resend.emails.send({
-            from: 'UNHAS MUN Contact Form <onboarding@resend.dev>', // Update to your verified domain in production (e.g., info@unhasmun.org)
-            // Email pribadi Anda untuk testing:
+            from: 'UNHAS MUN Contact Form <onboarding@resend.dev>',
             to: ['imam.fadhil28@gmail.com'], // The email where you want to receive messages
             replyTo: email,
             subject: `New Contact Message from ${name}`,
@@ -38,10 +37,11 @@ export async function POST(request: Request) {
             { message: 'Message sent successfully', data },
             { status: 200 }
         );
-    } catch (error: any) {
+    } catch (error) {
         console.error('Error sending email via Resend:', error);
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
         return NextResponse.json(
-            { message: 'Failed to send message', error: error.message || 'Unknown error' },
+            { message: 'Failed to send message', error: errorMessage },
             { status: 500 }
         );
     }
