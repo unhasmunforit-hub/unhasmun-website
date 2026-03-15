@@ -29,3 +29,14 @@ h5,
 h6 {
   font-weight: 700;
 }
+
+/* Remove autofill background on form inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-text-fill-color: white !important;
+  background: transparent !important;
+  background-clip: text !important;
+}
