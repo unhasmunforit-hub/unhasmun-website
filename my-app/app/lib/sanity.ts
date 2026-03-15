@@ -6,7 +6,11 @@ export const sanityClient = createClient({
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "5ydkc73p",
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
     apiVersion: "2024-01-01",
-    useCdn: true,
+    useCdn: false, // Turn off CDN for real-time draft updates
+    stega: {
+        enabled: true,
+        studioUrl: "http://localhost:3333",
+    },
 });
 
 const builder = imageUrlBuilder(sanityClient);
