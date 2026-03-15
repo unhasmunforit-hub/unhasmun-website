@@ -2,9 +2,9 @@ import Image from "next/image";
 
 export default function MakassarMunPage() {
     return (
-        <section className="relative bg-mun-cream min-h-screen">
-            {/* Background */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <section className="relative bg-mun-cream min-h-screen flex flex-col font-sans overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 pointer-events-none z-0">
                 <Image
                     src="/background-page.svg"
                     alt=""
@@ -13,33 +13,42 @@ export default function MakassarMunPage() {
                 />
             </div>
 
-            <div className="relative max-w-5xl mx-auto px-4 pt-32 pb-20">
-                <h1
-                    className="font-black uppercase text-mun-dark mb-6"
-                    style={{ fontSize: "clamp(32px, 5vw, 56px)", letterSpacing: "-1px" }}
-                >
-                    Makassar MUN
-                </h1>
-
-                <p
-                    className="text-mun-dark leading-relaxed"
-                    style={{ textAlign: "justify", fontSize: "clamp(16px, 2vw, 20px)" }}
-                >
-                    Makassar MUN is an annual Model United Nations conference organized by UNHAS MUN,
-                    bringing together delegates from various universities to simulate United Nations
-                    proceedings. Join us for an unforgettable experience of diplomacy, debate, and
-                    international cooperation.
-                </p>
-
-                {/* Placeholder for future content */}
-                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-white/50 backdrop-blur-sm rounded-xl p-8 border border-mun-dark/10">
-                        <h3 className="text-xl font-bold text-mun-dark mb-3">Coming Soon</h3>
-                        <p className="text-mun-dark/70 text-sm">
-                            Conference details, committee information, and registration will be available here.
-                        </p>
+            {/* Main Content Space */}
+            <div className="relative z-10 w-full flex-grow flex items-center justify-center px-4 pt-28 md:pt-40 pb-12 md:pb-24">
+                {/* 2x2 Grid, forced 2 columns on mobile */}
+                <div className="grid grid-cols-2 gap-4 sm:gap-8 md:gap-20 lg:gap-28 w-full max-w-5xl pt-8 md:pt-12">
+                    {/* Card 1 */}
+                    <div className="bg-[#B93636] rounded-2xl md:rounded-[2rem] aspect-square flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 shadow-2xl transition-transform hover:scale-105">
+                        <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-44 md:h-44 bg-[#D1D5DB] rounded-full mb-3 sm:mb-6 md:mb-8 shadow-inner"></div>
+                        <h2 className="text-white font-bold text-[10px] sm:text-sm md:text-xl lg:text-[22px] tracking-wide text-center uppercase">TO BE ANNOUNCED</h2>
+                    </div>
+                    {/* Card 2 */}
+                    <div className="bg-[#B93636] rounded-2xl md:rounded-[2rem] aspect-square flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 shadow-2xl transition-transform hover:scale-105">
+                        <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-44 md:h-44 bg-[#D1D5DB] rounded-full mb-3 sm:mb-6 md:mb-8 shadow-inner"></div>
+                        <h2 className="text-white font-bold text-[10px] sm:text-sm md:text-xl lg:text-[22px] tracking-wide text-center uppercase">TO BE ANNOUNCED</h2>
+                    </div>
+                    {/* Card 3 */}
+                    <div className="bg-[#B93636] rounded-2xl md:rounded-[2rem] aspect-square flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 shadow-2xl transition-transform hover:scale-105">
+                        <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-44 md:h-44 bg-[#D1D5DB] rounded-full mb-3 sm:mb-6 md:mb-8 shadow-inner"></div>
+                        <h2 className="text-white font-bold text-[10px] sm:text-sm md:text-xl lg:text-[22px] tracking-wide text-center uppercase">TO BE ANNOUNCED</h2>
+                    </div>
+                    {/* Card 4 */}
+                    <div className="bg-[#B93636] rounded-2xl md:rounded-[2rem] aspect-square flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 shadow-2xl transition-transform hover:scale-105">
+                        <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-44 md:h-44 bg-[#D1D5DB] rounded-full mb-3 sm:mb-6 md:mb-8 shadow-inner"></div>
+                        <h2 className="text-white font-bold text-[10px] sm:text-sm md:text-xl lg:text-[22px] tracking-wide text-center uppercase">TO BE ANNOUNCED</h2>
                     </div>
                 </div>
+            </div>
+
+            {/* Tongkonan decoration - directly above footer, overlapping behind cards */}
+            <div className="relative w-full z-0 mt-[-100px] md:mt-[-250px] lg:mt-[-350px] pointer-events-none">
+                <Image
+                    src="/tongkonan-footer.webp"
+                    alt="Tongkonan decoration"
+                    width={1920}
+                    height={400}
+                    className="w-full h-auto block"
+                />
             </div>
         </section>
     );
