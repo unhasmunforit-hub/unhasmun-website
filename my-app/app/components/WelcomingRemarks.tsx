@@ -6,7 +6,7 @@ const remarks = {
   name: "Jacinta Arkana",
   titleLine1: "Secretary-General,",
   titleLine2: "Unhas MUN 2026",
-  avatar: "/about/commitee/Jacinta Arkana Shafiqah Jasman (Eci) (1).webp",
+  avatar: "/about/commitee/Jacinta Arkana Shafiqah Jasman (Eci) (1) 1.webp",
   letter: [
     "Dear Distinguished Guests,",
     "Hi, everyone! I am Jacinta, and it is my honor to serve as the Secretary-General of Unhas MUN 2026! On behalf of the entire secretariat, I warmly welcome you to Unhas Model United Nations, a student activity of Hasanuddin University where students come together to learn, share ideas, and grow. We are brought together by curiosity about global issues and a genuine desire to understand the world more deeply. More than anything, this is a space to grow as people, to shape perspective, and to become more aware of the impact we carry.",
