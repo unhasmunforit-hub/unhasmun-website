@@ -16,8 +16,11 @@ export const metadata: Metadata = {
 
 export const revalidate = 60; // revalidate every 60 seconds
 
+import { draftMode } from "next/headers";
+
 export default async function WorldReviewPage() {
-    const articles = await getArticles();
+    const { isEnabled } = await draftMode();
+    const articles = await getArticles(isEnabled);
 
     return (
         <section className="relative bg-mun-cream min-h-screen">

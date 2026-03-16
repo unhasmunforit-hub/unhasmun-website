@@ -6,9 +6,12 @@ import ShareButtons from "@/app/components/ShareButtons";
 
 export const dynamic = "force-dynamic"; // skip cache for debugging
 
+import { draftMode } from "next/headers";
+
 export default async function ArticleDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { isEnabled } = await draftMode();
     const { slug } = await params;
-    const article = await getArticleBySlug(slug);
+    const article = await getArticleBySlug(slug, isEnabled);
 
     if (!article) {
         notFound();
