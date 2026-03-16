@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { getArticleBySlug, urlFor } from "@/app/lib/sanity";
+import ShareButtons from "@/app/components/ShareButtons";
 
 export const dynamic = "force-dynamic"; // skip cache for debugging
 
@@ -12,6 +13,16 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
     if (!article) {
         notFound();
     }
+
+    // Format the published date
+    const formattedDate = article.publishedAt
+        ? new Date(article.publishedAt).toLocaleDateString("id-ID", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+        })
+        : "";
 
     // Custom portable text components for consistent styling
     const components = {
@@ -83,12 +94,20 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
             <div className="relative max-w-4xl mx-auto px-4 pt-32 md:pt-40 pb-20 md:pb-32">
                 {/* Article Header */}
                 <header className="mb-8 md:mb-12">
-                    <h1 className="font-extrabold text-3xl md:text-4xl lg:text-5xl mb-4 leading-tight">
+                    <h1 className="font-extrabold text-3xl md:text-4xl lg:text-5xl mb-3 leading-tight">
                         {article.title}
                     </h1>
-                    <p className="text-base font-medium opacity-90">
-                        By {article.author?.name || "UNHAS MUN Contributor"}
-                    </p>
+                    {formattedDate && (
+                        <p className="text-sm text-mun-dark/60 mb-4">
+                            {formattedDate}
+                        </p>
+                    )}
+                    <div className="flex items-center justify-between flex-wrap gap-3 pt-3 border-t border-mun-dark/10">
+                        <p className="text-base font-medium opacity-90">
+                            By {article.author?.name || "UNHAS MUN Contributor"}
+                        </p>
+                        <ShareButtons title={article.title} slug={article.slug.current} />
+                    </div>
                 </header>
 
                 {/* Main Hero Image */}
