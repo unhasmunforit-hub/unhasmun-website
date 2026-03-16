@@ -40,6 +40,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { VisualEditing } from "next-sanity/visual-editing";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,6 +57,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <VisualEditing />
       </body>
     </html>
   );

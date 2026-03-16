@@ -17,7 +17,7 @@ export default defineConfig({
     presentationTool({
       previewUrl: {
         draftMode: {
-          enable: 'http://localhost:3000/api/draft',
+          enable: 'http://localhost:3000/world-review',
         },
       },
     }),
