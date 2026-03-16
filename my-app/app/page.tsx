@@ -3,8 +3,19 @@ import FeaturedArticles from '@/app/components/FeaturedArticles';
 import WelcomingRemarks from '@/app/components/WelcomingRemarks';
 import AboutSection from '@/app/components/AboutSection';
 import Image from 'next/image';
+import { getArticles, urlFor } from '@/app/lib/sanity';
 
-export default function Home() {
+export const revalidate = 60; // revalidate Sanity data every 60 seconds
+
+export default async function Home() {
+  const sanityArticles = await getArticles();
+
+  // Map Sanity articles to the shape FeaturedArticles expects
+  const articles = sanityArticles.map((article) => ({
+    ...article,
+    imageUrl: article.mainImage ? urlFor(article.mainImage).width(800).height(600).url() : "",
+  }));
+
   return (
     <>
       <Hero />
@@ -19,7 +30,7 @@ export default function Home() {
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 space-y-20 md:space-y-24 pt-8 pb-20">
-          <FeaturedArticles />
+          <FeaturedArticles articles={articles} />
           <WelcomingRemarks />
           <AboutSection />
         </div>
