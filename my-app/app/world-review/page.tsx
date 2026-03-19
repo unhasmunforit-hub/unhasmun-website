@@ -16,8 +16,11 @@ export const metadata: Metadata = {
 
 export const revalidate = 60; // revalidate every 60 seconds
 
+import { draftMode } from "next/headers";
+
 export default async function WorldReviewPage() {
-    const articles = await getArticles();
+    const { isEnabled } = await draftMode();
+    const articles = await getArticles(isEnabled);
 
     return (
         <section className="relative bg-mun-cream min-h-screen">
@@ -42,7 +45,7 @@ export default async function WorldReviewPage() {
                             >
                                 {/* Article Image */}
                                 <div className="w-full md:w-[45%] shrink-0 overflow-hidden rounded-2xl shadow-lg">
-                                    <div className="relative aspect-[4/3]">
+                                    <div className="relative aspect-4/3">
                                         <Image
                                             src={urlFor(article.mainImage).width(800).height(600).url()}
                                             alt={article.title}

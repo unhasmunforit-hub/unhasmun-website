@@ -17,7 +17,7 @@ export default defineConfig({
     presentationTool({
       previewUrl: {
         draftMode: {
-          enable: 'https://unhasmun-website.vercel.app/world-review',
+          enable: 'http://localhost:3000/api/draft?secret=unhas_mun_preview_99x2_secure',
         },
       },
     }),

@@ -6,7 +6,8 @@ export const sanityClient = createClient({
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "5ydkc73p",
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
     apiVersion: "2024-01-01",
-    useCdn: false, // Turn off CDN for real-time draft updates
+    useCdn: false,
+    token: process.env.SANITY_API_READ_TOKEN, // Needed for draft fetching
     stega: {
         enabled: true,
         studioUrl: "http://localhost:3333",
@@ -44,14 +45,18 @@ const ARTICLES_QUERY = `*[_type == "article"] | order(publishedAt desc) {
     publishedAt
 }`;
 
-export async function getArticles(): Promise<SanityArticle[]> {
-    return sanityClient.fetch(ARTICLES_QUERY);
+export async function getArticles(isDraftMode = false): Promise<SanityArticle[]> {
+    return sanityClient.fetch(ARTICLES_QUERY, {}, {
+        perspective: isDraftMode ? 'drafts' : 'published',
+    });
 }
 
 const ARTICLE_BY_SLUG_QUERY = `*[_type == "article" && slug.current == $slug][0] {
     _id,
+    publishedAt,
     title,
     slug,
+    author->{name},
     excerpt,
     "mainImage": {
         "asset": mainImage.asset,
@@ -68,11 +73,11 @@ const ARTICLE_BY_SLUG_QUERY = `*[_type == "article" && slug.current == $slug][0]
         "caption": thirdImage.caption,
         "imageDescription": thirdImage.imageDescription
     },
-    publishedAt,
-    author->{name},
-    "bodySections": bodySections[][]
+    "bodySections": bodySections[]
 }`;
 
-export async function getArticleBySlug(slug: string): Promise<SanityArticleDetail | null> {
-    return sanityClient.fetch(ARTICLE_BY_SLUG_QUERY, { slug });
+export async function getArticleBySlug(slug: string, isDraftMode = false): Promise<SanityArticleDetail | null> {
+    return sanityClient.fetch(ARTICLE_BY_SLUG_QUERY, { slug }, {
+        perspective: isDraftMode ? 'drafts' : 'published',
+    });
 }

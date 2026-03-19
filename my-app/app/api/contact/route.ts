@@ -20,7 +20,7 @@ export async function POST(request: Request) {
         // Send email using Resend
         const data = await resend.emails.send({
             from: 'UNHAS MUN Contact Form <onboarding@resend.dev>',
-            to: ['imam.fadhil28@gmail.com'], // The email where you want to receive messages
+            to: ['unhasmunforit@gmail.com'], // The email where you want to receive messages
             replyTo: email,
             subject: `New Contact Message from ${name}`,
             html: `
