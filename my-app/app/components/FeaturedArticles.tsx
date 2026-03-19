@@ -1,43 +1,23 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from 'next/image';
+import Link from 'next/link';
 
-const articles = [
-  {
-    id: 1,
-    title: "UNHAS MUN 2026 Theme Announced",
-    excerpt: "Discover this year's theme and what it means for global diplomacy and international cooperation.",
-    category: "News",
-    date: "January 15, 2026",
-    image: "/home/download (8).jpg"
-  },
-  {
-    id: 2,
-    title: "Registration Now Open",
-    excerpt: "Secure your spot at the most prestigious Model UN event in the region. Early bird pricing available.",
-    category: "Event",
-    date: "January 10, 2026",
-    image: "/home/download (11).jpg"
-  },
-  {
-    id: 3,
-    title: "Meet Our Secretariat",
-    excerpt: "Get to know the dedicated team behind UNHAS MUN 2026 and their vision for this year's conference.",
-    category: "Team",
-    date: "January 5, 2026",
-    image: "/home/download (10).jpg"
-  },
-  {
-    id: 4,
-    title: "Committee Announcements",
-    excerpt: "Explore the diverse range of committees available at UNHAS MUN 2026.",
-    category: "Committee",
-    date: "January 3, 2026",
-    image: "/home/download (9).jpg"
-  }
-];
+interface Article {
+  _id: string;
+  title: string;
+  excerpt: string;
+  slug: { current: string };
+  mainImage?: any;
+  publishedAt: string;
+  imageUrl?: string;
+}
 
-export default function FeaturedArticles() {
+interface FeaturedArticlesProps {
+  articles: Article[];
+}
+
+export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
@@ -71,6 +51,30 @@ export default function FeaturedArticles() {
   const canGoNext = currentIndex < articles.length - itemsPerPage;
   const canGoPrev = currentIndex > 0;
 
+  // Format date helper
+  const formatDate = (dateString: string) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
+  if (!articles || articles.length === 0) {
+    return (
+      <section className="py-12 md:py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-mun-dark mb-6">
+            Featured Articles
+          </h2>
+          <p className="text-mun-dark/60 text-center py-12">Coming Soon</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-12 md:py-16 px-4">
       <div className="max-w-6xl mx-auto">
@@ -78,9 +82,12 @@ export default function FeaturedArticles() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-mun-dark">
             Featured Articles
           </h2>
-          <button className="text-xs sm:text-sm font-medium underline text-mun-dark hover:text-mun-red transition-colors">
+          <Link
+            href="/world-review"
+            className="text-xs sm:text-sm font-medium underline text-mun-dark hover:text-mun-red transition-colors"
+          >
             View All Articles
-          </button>
+          </Link>
         </div>
 
         <div className="relative">
@@ -106,39 +113,45 @@ export default function FeaturedArticles() {
             >
               {articles.map((article) => (
                 <div
-                  key={article.id}
+                  key={article._id}
                   className="min-w-[calc(100%)] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)] px-2 md:px-4"
                 >
-                  <article className="group cursor-pointer h-full">
-                    <div className="overflow-hidden rounded-xl relative h-48 sm:h-56 md:h-64">
-                      <Image
-                        src={article.image}
-                        alt={article.title}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-                      <div className="absolute inset-0 flex flex-col p-3 sm:p-4 md:p-6 text-white">
-                        <h3 className="text-sm sm:text-base md:text-xl font-bold mb-2 md:mb-3 line-clamp-2">
-                          {article.title}
-                        </h3>
-                        <p className="text-xs sm:text-sm text-gray-200 mb-auto line-clamp-2 md:line-clamp-3">
-                          {article.excerpt}
-                        </p>
-                        <div className="flex items-end justify-between mt-2 md:mt-4">
-                          <button className="bg-white/10 backdrop-blur-md text-white text-xs sm:text-sm font-medium px-3 py-1.5 sm:px-4 sm:py-2 rounded">
-                            {article.date}
-                          </button>
-                          <button className="bg-mun-red text-white text-xs sm:text-sm font-medium px-3 py-1.5 sm:px-4 sm:py-2 rounded hover:bg-mun-red/80 transition-colors flex items-center gap-1">
-                            View Article
-                            <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </button>
+                  <Link href={`/world-review/${article.slug.current}`}>
+                    <article className="group cursor-pointer h-full">
+                      <div className="overflow-hidden rounded-xl relative h-48 sm:h-56 md:h-64">
+                        {article.imageUrl ? (
+                          <Image
+                            src={article.imageUrl}
+                            alt={article.title}
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-mun-dark/20" />
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+                        <div className="absolute inset-0 flex flex-col p-3 sm:p-4 md:p-6 text-white">
+                          <h3 className="text-sm sm:text-base md:text-xl font-bold mb-2 md:mb-3 line-clamp-2">
+                            {article.title}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-gray-200 mb-auto line-clamp-2 md:line-clamp-3">
+                            {article.excerpt}
+                          </p>
+                          <div className="flex items-end justify-between mt-2 md:mt-4">
+                            <span className="bg-white/10 backdrop-blur-md text-white text-xs sm:text-sm font-medium px-3 py-1.5 sm:px-4 sm:py-2 rounded">
+                              {formatDate(article.publishedAt)}
+                            </span>
+                            <span className="bg-mun-red text-white text-xs sm:text-sm font-medium px-3 py-1.5 sm:px-4 sm:py-2 rounded hover:bg-mun-red/80 transition-colors flex items-center gap-1">
+                              View Article
+                              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </article>
+                    </article>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -161,19 +174,21 @@ export default function FeaturedArticles() {
         </div>
 
         {/* Dot Indicators */}
-        <div className="flex justify-center gap-2 mt-6 md:mt-8">
-          {Array.from({ length: articles.length - itemsPerPage + 1 }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              className={`transition-all rounded-full ${index === currentIndex
-                ? "w-6 h-2 md:w-8 md:h-3 bg-mun-red"
-                : "w-2 h-2 md:w-3 md:h-3 bg-gray-300 hover:bg-gray-400"
-                }`}
-            />
-          ))}
-        </div>
+        {articles.length > itemsPerPage && (
+          <div className="flex justify-center gap-2 mt-6 md:mt-8">
+            {Array.from({ length: articles.length - itemsPerPage + 1 }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to slide ${index + 1}`}
+                className={`transition-all rounded-full ${index === currentIndex
+                  ? "w-6 h-2 md:w-8 md:h-3 bg-mun-red"
+                  : "w-2 h-2 md:w-3 md:h-3 bg-gray-300 hover:bg-gray-400"
+                  }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

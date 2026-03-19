@@ -14,8 +14,6 @@ export default function Hero() {
           priority
           className="w-full h-[85vh] object-cover md:h-auto md:object-contain"
         />
-        <div className="absolute inset-0 bg-black/65 z-10" />
-
         <div className="absolute inset-0 z-20 flex items-center justify-center">
           <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:gap-8 px-4 py-8 max-w-md md:max-w-none">
             <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">

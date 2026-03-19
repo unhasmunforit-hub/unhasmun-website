@@ -58,10 +58,10 @@ export default {
       },
       fields: [
         {
-          name: 'caption',
-          type: 'string',
-          title: 'Image Description / Caption',
-          validation: (Rule: any) => Rule.required(),
+          name: 'imageDescription',
+          type: 'text',
+          title: 'Image Description / Paragraph',
+          description: 'This text will appear as a paragraph inside the image card.',
         },
       ],
       validation: (Rule: any) => Rule.required(),
@@ -75,10 +75,10 @@ export default {
       },
       fields: [
         {
-          name: 'caption',
-          type: 'string',
-          title: 'Image Description / Caption',
-          validation: (Rule: any) => Rule.required(),
+          name: 'imageDescription',
+          type: 'text',
+          title: 'Image Description / Paragraph',
+          description: 'This text will appear as a paragraph inside the image card.',
         },
       ],
       description: 'Max 3 images total. This is image #2.',
@@ -92,10 +92,10 @@ export default {
       },
       fields: [
         {
-          name: 'caption',
-          type: 'string',
-          title: 'Image Description / Caption',
-          validation: (Rule: any) => Rule.required(),
+          name: 'imageDescription',
+          type: 'text',
+          title: 'Image Description / Paragraph',
+          description: 'This text will appear as a paragraph inside the image card.',
         },
       ],
       description: 'Max 3 images total. This is image #3.',
