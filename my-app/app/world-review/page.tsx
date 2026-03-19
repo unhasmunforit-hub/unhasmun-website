@@ -45,7 +45,7 @@ export default async function WorldReviewPage() {
                             >
                                 {/* Article Image */}
                                 <div className="w-full md:w-[45%] shrink-0 overflow-hidden rounded-2xl shadow-lg">
-                                    <div className="relative aspect-[4/3]">
+                                    <div className="relative aspect-4/3">
                                         <Image
                                             src={urlFor(article.mainImage).width(800).height(600).url()}
                                             alt={article.title}

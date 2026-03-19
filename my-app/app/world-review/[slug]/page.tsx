@@ -65,7 +65,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
         },
         types: {
             image: ({ value }: any) => (
-                <div className="w-full relative aspect-[14/9] md:aspect-[16/9] rounded-2xl md:rounded-3xl overflow-hidden my-8 md:my-12 shadow-sm">
+                <div className="w-full relative aspect-14/9 md:aspect-video rounded-2xl md:rounded-3xl overflow-hidden my-8 md:my-12 shadow-sm">
                     <Image
                         src={urlFor(value).url()}
                         alt={value.caption || "Article Image"}
@@ -116,7 +116,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                 {/* Main Hero Image */}
                 {article.mainImage && (
                     <div className="mb-10 md:mb-12">
-                        <div className="w-full relative aspect-[14/9] md:aspect-[16/9] rounded-2xl md:rounded-3xl overflow-hidden shadow-md">
+                        <div className="w-full relative aspect-14/9 md:aspect-video rounded-2xl md:rounded-3xl overflow-hidden shadow-md">
                             <Image
                                 src={urlFor(article.mainImage).url()}
                                 alt={article.mainImage.caption || article.title}
@@ -145,7 +145,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                     {/* Secondary Image */}
                     {article.secImage?.asset && (
                         <div className="my-10 md:my-12">
-                            <div className="w-full relative aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-sm">
+                            <div className="w-full relative aspect-video md:aspect-21/9 rounded-2xl overflow-hidden shadow-sm">
                                 <Image
                                     src={urlFor(article.secImage).url()}
                                     alt={article.secImage.caption || "Secondary article image"}
@@ -172,7 +172,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                     {/* Third Image */}
                     {article.thirdImage?.asset && (
                         <div className="my-10 md:my-12">
-                            <div className="w-full relative aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-sm">
+                            <div className="w-full relative aspect-video md:aspect-21/9 rounded-2xl overflow-hidden shadow-sm">
                                 <Image
                                     src={urlFor(article.thirdImage).url()}
                                     alt={article.thirdImage.caption || "Third article image"}
