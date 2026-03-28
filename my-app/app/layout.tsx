@@ -55,7 +55,7 @@ export default function RootLayout({
         className={`${poppins.variable} antialiased bg-mun-cream`}
       >
         <Navbar />
-        <main className="min-h-screen font-sans">
+        <main className="min-h-screen font-sans overflow-x-hidden">
           {children}
         </main>
         <Footer />

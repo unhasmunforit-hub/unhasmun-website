@@ -127,6 +127,7 @@ const s = {
   /* double box */
   wrapper: {
     position: "relative",
+    overflow: "hidden",
   },
   cardBack: {
     position: "absolute",

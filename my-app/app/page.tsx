@@ -20,7 +20,7 @@ export default async function Home() {
     <>
       <Hero />
       {/* World Review Background - wraps all sections after Hero */}
-      <section className="relative bg-mun-cream -mt-px">
+      <section className="relative bg-mun-cream -mt-px overflow-x-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <Image
             src="/background-page.svg"
