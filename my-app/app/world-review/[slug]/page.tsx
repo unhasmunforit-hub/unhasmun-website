@@ -4,7 +4,7 @@ import { PortableText } from "@portabletext/react";
 import { getArticleBySlug, urlFor } from "@/app/lib/sanity";
 import ShareButtons from "@/app/components/ShareButtons";
 
-export const dynamic = "force-dynamic"; // skip cache for debugging
+export const revalidate = 60; // re-fetch at most once per minute
 
 import { draftMode } from "next/headers";
 

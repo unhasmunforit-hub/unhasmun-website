@@ -146,8 +146,6 @@ export default function ContactPage() {
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
-                                    pattern=".+@gmail\.com$"
-                                    title="Silakan gunakan alamat email @gmail.com"
                                     className="w-full bg-transparent border-b border-white/30 pb-2 pl-3 lg:pl-4 text-white placeholder-white/80 focus:outline-none focus:border-white transition-colors"
                                 />
                             </div>
@@ -162,8 +160,8 @@ export default function ContactPage() {
                                     onChange={handleChange}
                                     pattern="[0-9]*"
                                     inputMode="numeric"
-                                    onKeyPress={(e) => {
-                                        if (!/[0-9]/.test(e.key)) {
+                                    onKeyDown={(e) => {
+                                        if (e.key.length === 1 && !/[0-9]/.test(e.key)) {
                                             e.preventDefault();
                                         }
                                     }}

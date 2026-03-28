@@ -3,18 +3,16 @@ import ShinyText from './ShinyText';
 
 export default function Hero() {
   return (
-    <section className="relative w-full bg-mun-dark">
-      {/* Background Image - Natural size based on image aspect ratio */}
-      <div className="relative w-full overflow-hidden">
+    <section className="relative w-full overflow-hidden bg-mun-dark text-[0px] leading-[0]">
         <Image
           src="/home/hero-bg.webp"
           alt="UNHAS MUN Header"
           width={1920}
           height={1080}
           priority
-          className="w-full h-[85vh] object-cover md:h-auto md:object-contain"
+          className="block w-full h-[85vh] object-cover md:h-auto md:object-contain"
         />
-        <div className="absolute inset-0 z-20 flex items-center justify-center">
+        <div className="absolute inset-0 z-20 flex items-center justify-center text-base leading-normal">
           <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:gap-8 px-4 py-8 max-w-md md:max-w-none">
             <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
               <Image
@@ -66,9 +64,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
-      {/* Gradient transition overlay at bottom of hero */}
-      <div className="absolute bottom-0 left-0 w-full z-30 pointer-events-none h-24 md:h-32 bg-gradient-to-t from-[#FEF9F3] to-transparent" />
+
     </section>
   );
 }

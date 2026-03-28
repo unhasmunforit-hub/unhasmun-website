@@ -166,13 +166,13 @@ export default function CommitteeSection() {
         transition={{ duration: 0.3, delay: index * 0.1 }}
         className={`bg-mun-red rounded-2xl p-4 text-white text-center shadow-lg flex flex-col ${extraClass}`}
       >
-        <div className="bg-white rounded-xl h-72 md:h-56 w-full mb-4 flex items-center justify-center overflow-hidden flex-shrink-0">
+        <div className="bg-white rounded-xl aspect-[3/4] w-full mb-4 flex items-center justify-center overflow-hidden flex-shrink-0">
           <Image
             src={member.image}
             alt={member.name}
             width={300}
             height={400}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
         </div>
         <h3 className={`font-bold text-sm md:text-base mb-1 ${isAdvisor ? '' : 'line-clamp-1'}`}>{member.name}</h3>
