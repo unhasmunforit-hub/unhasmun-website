@@ -93,8 +93,23 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                     className="object-cover"
                 />
             </div>
-            
+
             <div className="relative max-w-4xl mx-auto px-4 pt-32 md:pt-40 pb-20 md:pb-32">
+                {/* Breadcrumb Navigation */}
+                <nav className="mb-6 md:mb-8 flex items-center gap-2 text-xs tracking-widest uppercase" aria-label="Breadcrumb">
+                    <a
+                        href="/world-review"
+                        className="text-mun-dark/50 hover:text-mun-red transition-colors font-semibold whitespace-nowrap"
+                    >
+                        World Review
+                    </a>
+                    <span className="text-mun-dark/30">/</span>
+                    <span className="text-mun-dark/80 font-bold">
+                        {article.title.split(/\s+/).slice(0, 3).join(" ")}
+                        {article.title.split(/\s+/).length > 3 ? "....." : ""}
+                    </span>
+                </nav>
+
                 {/* Article Header */}
                 <header className="mb-8 md:mb-12">
                     <h1 className="font-extrabold text-3xl md:text-4xl lg:text-5xl mb-3 leading-tight">
