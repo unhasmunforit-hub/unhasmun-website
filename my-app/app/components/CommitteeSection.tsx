@@ -43,7 +43,7 @@ const committeeData: Record<Category, Member[]> = {
       image: "/about/commitee/Anisa Shafiqa Yusran (IO) 1.webp",
     },
     {
-      name: "Muh. Sumary Arif Rusman",
+      name: "Muh. Summary Arif Rusman",
       position: "Minister of M&R",
       image: "/about/commitee/Muh. Sumary Arif Rusman J (2) 1.webp",
     },
@@ -104,45 +104,45 @@ const usgMemberData: Record<string, { title: string; members: string[] }> = {
   "Fathiyah Salsabilla": {
     title: "General Assembly Members",
     members: [
-      "Amru Bin Salahuddin", "Andi Gean Arifta", "Andi Muh. Fabyan",
-      "Faruq Syaifullah Shidiq", "Fhalinka Davina", "Rowy Afga Anugrah",
-      "Hans Petrus Lopuhaa", "Khusnul Khatimah", "Gie Marhaen Saili",
-      "Muthia Syahida", "Razwa Farras",
-      "M. Zacky Shatwan", "Videlia Derby",
-      "Wanda Zotli Asma", "La Ode Muh. Irgi Zaltian",
+      "Amru Bin Salahuddin", "Andi Gean Arifta Fawelau", "Andi Muh. Fabyan Abhipraya",
+      "Faruq Syaifullah Shidiq", "Fhalinka Davina Fathunnisa", "Gie Marhaen Saili",
+      "Hans Petrus Lopuhaa", "Khusnul Khatimah Yunus", "La Ode Muh. Irgi Zaltian Syahputra",
+      "Muthia Syahida", "M. Zacky Shafwan N.",
+      "Razwa Farras Zulaikha", "Rowy Afga Anugrah",
+      "Videlia Derby", "Wanda Zatil Asma",
     ],
   },
   "Anisa Shafiqa Yusran": {
     title: "Internal Oversight",
     members: [
-      "Andi Atiqa Naira Ilham", "Grace Agnes Dette", "Laela Alie",
-      "Aurelia Marlin Kottu", "Jaren Manuel Loardi", "Mahdi Mahardika",
-      "Khumairah Sashkia", "Marria Quenni Michaela",
-      "M. Rezky Fatiha", "Nindi Tharya Ramadhani", "Tarniza Aurelia",
-      "M. Althaf Alfazian", "Shandy Aqilah Khaerani", "Tsabitha Aqilah",
-      "Muh. Nafsarrakhman", "Syaskya Dwi Aryanti", "Walid Hilal Anugerah",
+      "Andi Atiqa Naira Ilham", "Aurelia Marlin Kattu Taula'bi", "Ethania Ebenheizer Picaulima",
+      "Grace Agnes Dette", "Jaren Manuel Loardi", "Khumairah Sashkia Lashmana Agelsyah",
+      "Laela Alie", "Mahdi Mahardika", "Marria Quenni Michaela",
+      "M. Rezky Fatiha Thamrin", "Muhammad Althaf Alfazian Syahran", "Muh. Nafsarrakhman Rivananda",
+      "Nindi Tharya Ramadhani", "Shandy Aqilah Khaerani", "Syaskya Dwi Aryanti",
+      "Tarhiza Aurelia Qur'ani", "Tsabitha Aqliah Burhan", "Walid Hilal Anugerah Sulthan",
     ],
   },
-  "Muh. Sumary Arif Rusman": {
+  "Muh. Summary Arif Rusman": {
     title: "Management & Research",
     members: [
-      "Ahmad Alsir Zotra", "Brine Tiara Bella", "Hanif Mutahhar Taufiq",
-      "Ahmad Haykal", "Eugenia Kana Daniela", "Iftitah Azzahra",
-      "Aura Nur Allysha", "Hakem Auliya Shidqi", "Jane Jesiasti Anggrena",
-      "Muh. Izzul Islam", "Putri Alia Abdul Aziz",
-      "Muthia Roihanun", "Salsabhila",
-      "Nurfaidah", "Steve Rimon Ferrel",
+      "Ahmad Aisir Zotra", "Ahmad Haykal Ramly", "Aura Nur Allysha Prianti",
+      "Brine Tiara Bella", "Eugenia Kana Daniela Timang Seran", "Hakam Auliya Shidqi",
+      "Hanif Mutahhar Taufiq", "Iftitah Azzahra", "Jane Jesiasti Anggrena",
+      "Muhammad Izzul Islam", "Muhammad Rifky Fahrezy Sabar", "Muthia Raihanun",
+      "Nurfaidah", "Putri Alia Abdul Aziz",
+      "Salsabhila", "Steve Rimon Ferrel Mallawangan",
     ],
   },
   "Aida Mufida Setiawan": {
     title: "Public Information & Relations",
     members: [
-      "Andi Fatimah Nuareni", "Christofer Billy Saputra", "Grishelda Nakezla",
-      "Andi Muh. Guttu Patalo", "Devina Arlianti Bahar", "Irham",
-      "Balqis Anastasya", "Elvia Nandini Azalia", "Muh. Adib Iftikharus",
-      "Muh. Ainulhuda Irwan", "Sulham",
-      "Muh. Idris Irfandi", "Veoline Pricilla Christania",
-      "Reinhard FitzGerald", "Zahwa Nafishaila Pradana",
+      "Andi Fatimah Nuareni Ramadhana A.", "Andi Muh. Guttu Patalo Zulkarnain", "Balqis Anastasya",
+      "Christofer Billy Saputra Wijayanto", "Devina Arlianti Bahar", "Elvia Nandini Azalia",
+      "Grishelda Nakezia", "Irham", "Muhammad Adib Iftikharus Sadat",
+      "Muhammad Ainulhuda Irwan", "Muh. Idris Irfandi", "Reinhard FitzGerald Mangiri Rante",
+      "Sulham", "Veoline Pricilla Christania",
+      "Zahwa Nafishaila Pradana",
     ],
   },
 };
@@ -291,14 +291,36 @@ export default function CommitteeSection() {
                 {popupData.title}
               </h3>
 
-              {/* Member names grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-3">
-                {popupData.members.map((name, i) => (
-                  <p key={i} className="text-sm text-mun-dark/80 text-center">
-                    {name}
-                  </p>
-                ))}
-              </div>
+              {/* Member names - split layout */}
+              {(() => {
+                const firstGroup = popupData.members.slice(0, 9);
+                const secondGroup = popupData.members.slice(9);
+                const useThreeCols = secondGroup.length > 0 && secondGroup.length % 3 === 0;
+                return (
+                  <>
+                    <div className="grid grid-cols-3 gap-x-6 gap-y-3">
+                      {firstGroup.map((name, i) => (
+                        <p key={i} className="text-sm text-mun-dark/80 text-center">
+                          {name}
+                        </p>
+                      ))}
+                    </div>
+                    {secondGroup.length > 0 && (
+                      <div
+                        className={`grid gap-x-6 gap-y-3 mt-5 mx-auto ${
+                          useThreeCols ? "grid-cols-3 w-full" : "grid-cols-2 max-w-[70%]"
+                        }`}
+                      >
+                        {secondGroup.map((name, i) => (
+                          <p key={i + 9} className="text-sm text-mun-dark/80 text-center">
+                            {name}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                );
+              })()}
             </motion.div>
           </motion.div>
         )}
