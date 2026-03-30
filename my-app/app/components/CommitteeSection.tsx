@@ -18,51 +18,51 @@ const committeeData: Record<Category, Member[]> = {
     {
       name: "Feodor Farrel",
       position: "Secretary",
-      image: "/about/commitee/Feodor Farrel Sulistyo 1.webp",
+      image: "/about/commitee/Feodor Farrel Sulistyo.webp",
     },
     {
       name: "Jacinta Arkana",
       position: "Secretary-General",
-      image: "/about/commitee/Jacinta Arkana Shafiqah Jasman (Eci) (1) 1.webp",
+      image: "/about/commitee/Jacinta Arkana Shafiqah Jasman.webp",
     },
     {
       name: "Afifah Radhiyah",
       position: "Treasurer",
-      image: "/about/commitee/Afifah Radhiyah Arifani 1.webp",
+      image: "/about/commitee/Afifah Radhiyah Arifani.webp",
     },
   ],
   "USG": [
     {
       name: "Fathiyah Salsabilla",
       position: "Minister of GA",
-      image: "/about/commitee/Fathiyah Salsabilla (GA) 1.webp",
+      image: "/about/commitee/Fathiyah Salsabilla (GA).webp",
     },
     {
       name: "Anisa Shafiqa Yusran",
       position: "Minister of IO",
-      image: "/about/commitee/Anisa Shafiqa Yusran (IO) 1.webp",
+      image: "/about/commitee/Anisa Shafiqa Yusran (IO).webp",
     },
     {
       name: "Muh. Summary Arif Rusman",
       position: "Minister of M&R",
-      image: "/about/commitee/Muh. Sumary Arif Rusman J (2) 1.webp",
+      image: "/about/commitee/Muh. Sumary Arif Rusman J.webp",
     },
     {
       name: "Aida Mufida Setiawan",
       position: "Minister of PIR",
-      image: "/about/commitee/Aida Mufida Setiawan (PIR) 1.webp",
+      image: "/about/commitee/Aida Mufida Setiawan (PIR).webp",
     },
   ],
   "SMG": [
     {
       name: "Muhammad Aflahal Mukmin",
       position: "SMG",
-      image: "/about/commitee/Muhammad Aflahal Mukmin 1.webp",
+      image: "/about/commitee/Muhammad Aflahal Mukmin.webp",
     },
     {
       name: "Zadrach Barenz Windessy",
       position: "SMG",
-      image: "/about/commitee/Zadrach Barenz Windessy 1.webp",
+      image: "/about/commitee/Zadrach Barenz Windessy.webp",
     },
     {
       name: "Indhie Rina Tamandalan",
@@ -72,29 +72,29 @@ const committeeData: Record<Category, Member[]> = {
   ],
   "Advisor": [
     {
-      name: "H. Abdul Razaq Z. Cangara, S.IP., M.Si., MIR",
+      name: "H. Abdul Razaq Z. Cangara, S.IP., M.Si., MIR.",
       position: "Faculty Advisor",
-      image: "/about/commitee/H. Abdul Razaq Z. Cangara, S.IP., M.Si., MIR.png",
+      image: "/about/commitee/H. Abdul Razaq Z. Cangara, S.IP., M.Si., MIR..webp",
     },
     {
-      name: "Ishaq Rahman, S.IP., M.Si., AMIPR",
+      name: "Ishaq Rahman, S.IP., M.Si., AMIPR.",
       position: "Faculty Advisor",
-      image: "/about/commitee/Ishaq Rahman, S.IP., M.Si., AMIPR.png",
+      image: "/about/commitee/Ishaq Rahman, S.IP., M.Si., AMIPR..webp",
     },
     {
-      name: "Rafika Nurul Hamdani Ramli, S.H., LL.M",
+      name: "Rafika Nurul Hamdani Ramli, S.H., LL.M.",
       position: "Faculty Advisor",
-      image: "/about/commitee/Rafika Nurul Hamdani Ramli, S.H., LL.M.png",
+      image: "/about/commitee/Rafika Nurul Hamdani Ramli, S.H., LL.M..webp",
     },
     {
-      name: "Rezky Ramadhani, S.S., M.Litt",
+      name: "Rezky Ramadhani, S.S., M.Litt.",
       position: "Faculty Advisor",
-      image: "/about/commitee/Rezky Ramadhani, S.S., M.Litt.png",
+      image: "/about/commitee/Rezky Ramadhani, S.S., M.Litt..webp",
     },
     {
-      name: "Ilham Alimuddin, S.T., M.GIS, Ph.D",
+      name: "Ilham Alimuddin, S.T., M.GIS, Ph.D.",
       position: "Faculty Advisor",
-      image: "/about/commitee/Ilham Alimuddin 1.png",
+      image: "/about/commitee/Ilham Alimuddin, S.T., M.Gis , Ph.D..webp",
     },
   ],
 };
@@ -307,9 +307,8 @@ export default function CommitteeSection() {
                     </div>
                     {secondGroup.length > 0 && (
                       <div
-                        className={`grid gap-x-6 gap-y-3 mt-5 mx-auto ${
-                          useThreeCols ? "grid-cols-3 w-full" : "grid-cols-2 max-w-[70%]"
-                        }`}
+                        className={`grid gap-x-6 gap-y-3 mt-5 mx-auto ${useThreeCols ? "grid-cols-3 w-full" : "grid-cols-2 max-w-[70%]"
+                          }`}
                       >
                         {secondGroup.map((name, i) => (
                           <p key={i + 9} className="text-sm text-mun-dark/80 text-center">
