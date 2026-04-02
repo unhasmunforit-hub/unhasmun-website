@@ -28,16 +28,16 @@ export default function AboutSection() {
         </div>
 
         {/* ── Right: Title + Text + Button ── */}
-        <div className="relative z-10 flex flex-col justify-center h-full gap-3 md:gap-4">
+        <div className="relative z-10 flex flex-col justify-center h-full gap-3 md:gap-4 translate-y-4 md:translate-y-6">
           <h2
             className="font-black uppercase text-mun-dark mb-2 md:mb-3 mt-4 md:mt-0"
             style={{ fontSize: "clamp(28px, 5vw, 56px)", letterSpacing: "-1px" }}
           >
-            ABOUT MUN
+            ABOUT UNHAS MUN
           </h2>
           <p
             className="text-mun-dark leading-relaxed"
-            style={{ textAlign: "justify", fontSize: "clamp(16px, 2vw, 21px)" }}
+            style={{ textAlign: "justify", fontSize: "clamp(13.5px, 2vw, 21px)" }}
           >
             Unhas MUN Student Activity, established in November 2010, is a non-profit MUN based
             Student Activity for Hasanuddin University Student. With the aim to strive as an
@@ -47,7 +47,7 @@ export default function AboutSection() {
 
           <p
             className="text-mun-dark leading-relaxed"
-            style={{ textAlign: "justify", fontSize: "clamp(16px, 2vw, 21px)" }}
+            style={{ textAlign: "justify", fontSize: "clamp(13.5px, 2vw, 21px)" }}
           >
             We argue, we debate, we negotiate, just like what diplomats do! We practice and
             advance our primary diplomatic skills to prepare ourselves for the upcoming global
