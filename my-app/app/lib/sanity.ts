@@ -18,6 +18,10 @@ export const sanityClient = createClient({
     apiVersion: "2024-01-01",
     useCdn: false,
     token: process.env.SANITY_API_READ_TOKEN, // Needed for draft fetching
+    stega: {
+        enabled: true,
+        studioUrl: "http://localhost:3333",
+    },
 });
 
 const builder = imageUrlBuilder(sanityClient);

@@ -42,6 +42,9 @@ export const metadata: Metadata = {
   },
 };
 
+import { Suspense } from "react";
+import VisualEditingOnlyInStudio from "./components/VisualEditingOnlyInStudio";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,6 +62,9 @@ export default function RootLayout({
         <Footer />
         <Analytics />
         <SpeedInsights />
+        <Suspense fallback={null}>
+          <VisualEditingOnlyInStudio />
+        </Suspense>
       </body>
     </html>
   );
