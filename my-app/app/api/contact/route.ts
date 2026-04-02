@@ -1,6 +1,16 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+/** Escape HTML special characters to prevent XSS in email templates */
+function escapeHtml(str: string): string {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
 export async function POST(request: Request) {
     try {
         // Initialize Resend client inside handler so the build doesn't fail
@@ -17,20 +27,26 @@ export async function POST(request: Request) {
             );
         }
 
+        // Sanitize user input before embedding in HTML
+        const safeName = escapeHtml(name);
+        const safeEmail = escapeHtml(email);
+        const safePhone = escapeHtml(phone || 'Not provided');
+        const safeComment = escapeHtml(comment).replace(/\n/g, '<br/>');
+
         // Send email using Resend
         const data = await resend.emails.send({
             from: 'UNHAS MUN Contact Form <onboarding@resend.dev>',
-            to: ['imam.fadhil28@gmail.com'], // The email where you want to receive messages
+            to: ['unhasmunforit@gmail.com'], // The email where you want to receive messages
             replyTo: email,
-            subject: `New Contact Message from ${name}`,
+            subject: `New Contact Message from ${safeName}`,
             html: `
                 <h2>New Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+                <p><strong>Name:</strong> ${safeName}</p>
+                <p><strong>Email:</strong> ${safeEmail}</p>
+                <p><strong>Phone:</strong> ${safePhone}</p>
                 <hr />
                 <h3>Message/Comment:</h3>
-                <p>${comment.replace(/\n/g, '<br/>')}</p>
+                <p>${safeComment}</p>
             `,
         });
 

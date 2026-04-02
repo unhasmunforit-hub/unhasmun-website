@@ -18,7 +18,11 @@ export default function Navbar() {
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const [isReady, setIsReady] = useState(false);
 
-  const activeIndex = navItems.findIndex((item) => item.href === pathname);
+  const activeIndex = navItems.findIndex((item) =>
+    item.href === "/"
+      ? pathname === "/"
+      : pathname === item.href || pathname.startsWith(item.href + "/")
+  );
 
   useEffect(() => {
     const updateIndicator = () => {
@@ -78,7 +82,7 @@ export default function Navbar() {
           )}
 
           {navItems.map((item, index) => {
-            const isActive = pathname === item.href;
+            const isActive = item.href === "/" ? pathname === "/" : pathname === item.href || pathname.startsWith(item.href + "/");
             return (
               <Link
                 key={item.name}
@@ -121,7 +125,7 @@ export default function Navbar() {
           >
             <div className="flex flex-col py-2">
               {navItems.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = item.href === "/" ? pathname === "/" : pathname === item.href || pathname.startsWith(item.href + "/");
                 return (
                   <Link
                     key={item.name}

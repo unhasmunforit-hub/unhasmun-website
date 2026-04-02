@@ -19,7 +19,7 @@ interface FeaturedArticlesProps {
 
 export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [itemsPerPage, setItemsPerPage] = useState(1);
 
   useEffect(() => {
     const updateItemsPerPage = () => {
@@ -36,6 +36,14 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
 
+  // Clamp currentIndex when itemsPerPage changes
+  useEffect(() => {
+    const maxIndex = Math.max(0, articles.length - itemsPerPage);
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(maxIndex);
+    }
+  }, [itemsPerPage, articles.length, currentIndex]);
+
   const nextSlide = () => {
     if (currentIndex < articles.length - itemsPerPage) {
       setCurrentIndex(currentIndex + 1);
@@ -50,6 +58,9 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
 
   const canGoNext = currentIndex < articles.length - itemsPerPage;
   const canGoPrev = currentIndex > 0;
+
+  // Only the visible articles
+  const visibleArticles = articles.slice(currentIndex, currentIndex + itemsPerPage);
 
   // Format date helper
   const formatDate = (dateString: string) => {
@@ -91,83 +102,109 @@ export default function FeaturedArticles({ articles }: FeaturedArticlesProps) {
         </div>
 
         <div className="relative">
-          {/* Prev button */}
+          {/* Desktop: side buttons */}
           <button
             onClick={prevSlide}
             disabled={!canGoPrev}
             aria-label="Previous slide"
-            className={`absolute left-0 md:-left-14 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all shadow-lg ${canGoPrev
+            className={`hidden md:flex absolute -left-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full items-center justify-center transition-all shadow-lg ${canGoPrev
               ? "bg-mun-red text-white hover:bg-mun-red/80"
               : "bg-gray-200 text-gray-400 cursor-not-allowed"
               }`}
           >
-            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
-          <div className="overflow-hidden mx-12 md:mx-0">
-            <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)` }}
-            >
-              {articles.map((article) => (
-                <div
-                  key={article._id}
-                  className="min-w-[calc(100%)] sm:min-w-[calc(100%/2)] lg:min-w-[calc(100%/3)] px-2 md:px-4"
-                >
-                  <Link href={`/world-review/${article.slug.current}`}>
-                    <article className="group cursor-pointer h-full">
-                      <div className="overflow-hidden rounded-xl relative h-48 sm:h-56 md:h-64">
-                        {article.imageUrl ? (
-                          <Image
-                            src={article.imageUrl}
-                            alt={article.title}
-                            fill
-                            className="object-cover group-hover:scale-110 transition-transform duration-500"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-mun-dark/20" />
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-                        <div className="absolute inset-0 flex flex-col p-3 sm:p-4 md:p-6 text-white">
-                          <h3 className="text-sm sm:text-base md:text-xl font-bold mb-2 md:mb-3 line-clamp-2">
-                            {article.title}
-                          </h3>
-                          <p className="text-xs sm:text-sm text-gray-200 mb-auto line-clamp-2 md:line-clamp-3">
-                            {article.excerpt}
-                          </p>
-                          <div className="flex items-end justify-between mt-2 md:mt-4">
-                            <span className="bg-white/10 backdrop-blur-md text-white text-xs sm:text-sm font-medium px-3 py-1.5 sm:px-4 sm:py-2 rounded">
-                              {formatDate(article.publishedAt)}
-                            </span>
-                            <span className="bg-mun-red text-white text-xs sm:text-sm font-medium px-3 py-1.5 sm:px-4 sm:py-2 rounded hover:bg-mun-red/80 transition-colors flex items-center gap-1">
-                              View Article
-                              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </span>
-                          </div>
+          {/* Cards grid — only renders visible cards, never overflows */}
+          <div
+            className="grid gap-4 md:gap-8"
+            style={{ gridTemplateColumns: `repeat(${itemsPerPage}, 1fr)` }}
+          >
+            {visibleArticles.map((article) => (
+              <div key={article._id}>
+                <Link href={`/world-review/${article.slug.current}`}>
+                  <article className="group cursor-pointer h-full">
+                    <div className="overflow-hidden rounded-xl relative h-48 sm:h-56 md:h-64">
+                      {article.imageUrl ? (
+                        <Image
+                          src={article.imageUrl}
+                          alt={article.title}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-mun-dark/20" />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+                      <div className="absolute inset-0 flex flex-col p-3 sm:p-4 md:p-6 text-white">
+                        <h3 className="text-sm sm:text-base md:text-xl font-bold mb-2 md:mb-3 line-clamp-2">
+                          {article.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-gray-200 mb-auto line-clamp-2 md:line-clamp-3">
+                          {article.excerpt}
+                        </p>
+                        <div className="flex items-end justify-between mt-2 md:mt-4">
+                          <span className="bg-white/10 backdrop-blur-md text-white text-xs sm:text-sm font-medium px-3 py-1.5 sm:px-4 sm:py-2 rounded">
+                            {formatDate(article.publishedAt)}
+                          </span>
+                          <span className="bg-mun-red text-white text-xs sm:text-sm font-medium px-3 py-1.5 sm:px-4 sm:py-2 rounded hover:bg-mun-red/80 transition-colors flex items-center gap-1">
+                            View Article
+                            <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </span>
                         </div>
                       </div>
-                    </article>
-                  </Link>
-                </div>
-              ))}
-            </div>
+                    </div>
+                  </article>
+                </Link>
+              </div>
+            ))}
           </div>
 
-          {/* Next button */}
+          {/* Desktop: side button */}
           <button
             onClick={nextSlide}
             disabled={!canGoNext}
             aria-label="Next slide"
-            className={`absolute right-0 md:-right-14 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all shadow-lg ${canGoNext
+            className={`hidden md:flex absolute -right-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full items-center justify-center transition-all shadow-lg ${canGoNext
               ? "bg-mun-red text-white hover:bg-mun-red/80"
               : "bg-gray-200 text-gray-400 cursor-not-allowed"
               }`}
           >
-            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile: bottom nav buttons */}
+        <div className="flex md:hidden justify-center gap-4 mt-4">
+          <button
+            onClick={prevSlide}
+            disabled={!canGoPrev}
+            aria-label="Previous slide"
+            className={`w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-lg ${canGoPrev
+              ? "bg-mun-red text-white hover:bg-mun-red/80"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
+              }`}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            onClick={nextSlide}
+            disabled={!canGoNext}
+            aria-label="Next slide"
+            className={`w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-lg ${canGoNext
+              ? "bg-mun-red text-white hover:bg-mun-red/80"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
+              }`}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ShareButtonsProps {
     title: string;
@@ -8,9 +8,11 @@ interface ShareButtonsProps {
 
 export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     const [copied, setCopied] = useState(false);
-    const articleUrl = typeof window !== "undefined"
-        ? `${window.location.origin}/world-review/${slug}`
-        : `/world-review/${slug}`;
+    const [articleUrl, setArticleUrl] = useState(`/world-review/${slug}`);
+
+    useEffect(() => {
+        setArticleUrl(`${window.location.origin}/world-review/${slug}`);
+    }, [slug]);
 
     const shareText = encodeURIComponent(title);
     const shareUrl = encodeURIComponent(articleUrl);

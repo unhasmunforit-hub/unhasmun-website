@@ -2,9 +2,19 @@ import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 // No explicit SanityImageSource type needed here to avoid import errors
 
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+
+if (!projectId || !dataset) {
+    throw new Error(
+        "Missing required Sanity environment variables. " +
+        "Set NEXT_PUBLIC_SANITY_PROJECT_ID and NEXT_PUBLIC_SANITY_DATASET in .env.local"
+    );
+}
+
 export const sanityClient = createClient({
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "5ydkc73p",
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+    projectId,
+    dataset,
     apiVersion: "2024-01-01",
     useCdn: false,
     token: process.env.SANITY_API_READ_TOKEN, // Needed for draft fetching
