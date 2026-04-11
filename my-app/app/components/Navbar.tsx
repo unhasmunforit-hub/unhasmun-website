@@ -66,6 +66,26 @@ export default function Navbar() {
           />
         </Link>
 
+        {/* Mobile Page Name — center (between logo and hamburger) */}
+        <div className="md:hidden flex-1 flex justify-center overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={pathname}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2 }}
+              className="text-base font-semibold text-mun-dark tracking-wide"
+            >
+              {navItems.find((item) =>
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname === item.href || pathname.startsWith(item.href + "/")
+              )?.name ?? ""}
+            </motion.span>
+          </AnimatePresence>
+        </div>
+
         {/* Desktop Nav Items — center */}
         <div ref={containerRef} className="hidden md:flex items-center gap-1 mx-auto relative">
           {/* Sliding active indicator — horizontal only */}

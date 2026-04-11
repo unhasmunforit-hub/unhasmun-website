@@ -3,7 +3,9 @@
 import Image from 'next/image';
 
 const remarks = {
-  name: "Jacinta Arkana",
+  name: "Jacinta Arkana Shafiqah Jasman",
+  nameLine1: "Jacinta Arkana",
+  nameLine2: "Shafiqah Jasman",
   titleLine1: "Secretary-General,",
   titleLine2: "Unhas MUN 2026",
   avatar: "/about/commitee/Jacinta Arkana Shafiqah Jasman.webp",
@@ -68,7 +70,9 @@ export default function WelcomingRemarks() {
                 )}
               </div>
               <div>
-                <p style={s.name as React.CSSProperties} className="wr-name">{remarks.name}</p>
+                <p style={s.name as React.CSSProperties} className="wr-name">
+                  {remarks.nameLine1}<br />{remarks.nameLine2}
+                </p>
                 <p style={s.role as React.CSSProperties} className="wr-role">{remarks.titleLine1}</p>
                 <p style={s.role as React.CSSProperties} className="wr-role">{remarks.titleLine2}</p>
               </div>
@@ -174,7 +178,8 @@ const s = {
   profile: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-start",
+    alignItems: "center",
+    textAlign: "center",
     minWidth: "200px",
     paddingRight: "40px",
     gap: "4px",
