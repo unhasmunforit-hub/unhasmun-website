@@ -17,8 +17,21 @@ export default defineConfig({
     presentationTool({
       previewUrl: {
         draftMode: {
-          enable: 'http://localhost:3000/api/draft?secret=unhas_mun_preview_99x2_secure',
+          enable:
+            (typeof window !== 'undefined' && window.location.hostname === 'localhost'
+              ? 'http://localhost:3000'
+              : 'https://unhasmun-website.vercel.app') +
+            '/api/draft?secret=unhas_mun_preview_99x2_secure',
         },
+      },
+      // Izinkan koneksi dari localhost dan Vercel
+      resolve: {
+        mainDocuments: [
+          {
+            route: '/world-review/:slug',
+            filter: "_type == 'article' && slug.current == $slug",
+          },
+        ],
       },
     }),
   ],

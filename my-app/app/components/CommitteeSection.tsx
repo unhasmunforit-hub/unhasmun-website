@@ -16,17 +16,17 @@ interface Member {
 const committeeData: Record<Category, Member[]> = {
   "Executive Board": [
     {
-      name: "Feodor Farrel",
+      name: "Feodor Farrel Sulistyo",
       position: "Secretary",
       image: "/about/commitee/Feodor Farrel Sulistyo.webp",
     },
     {
-      name: "Jacinta Arkana",
+      name: "Jacinta Arkana\nShafiqah Jasman",
       position: "Secretary-General",
       image: "/about/commitee/Jacinta Arkana Shafiqah Jasman.webp",
     },
     {
-      name: "Afifah Radhiyah",
+      name: "Afifah Radhiyah Arifani",
       position: "Treasurer",
       image: "/about/commitee/Afifah Radhiyah Arifani.webp",
     },
@@ -175,8 +175,10 @@ export default function CommitteeSection() {
             className="w-full h-full object-cover object-top"
           />
         </div>
-        <h3 className={`font-bold text-sm md:text-base mb-1 ${isAdvisor ? '' : 'line-clamp-1'}`}>{member.name}</h3>
-        <p className="text-xs opacity-75">{member.position}</p>
+        <div className="flex-1 flex flex-col justify-center">
+          <h3 className={`font-bold text-sm md:text-base mb-1 whitespace-pre-line ${isAdvisor ? '' : 'line-clamp-2'}`}>{member.name}</h3>
+          <p className="text-xs opacity-75">{member.position}</p>
+        </div>
         {memberPopup && (
           <button
             onClick={() => setPopupData(memberPopup)}
@@ -228,12 +230,12 @@ export default function CommitteeSection() {
               layout
               className="mx-auto w-full flex flex-col items-center gap-6"
             >
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+              <div className="flex flex-col sm:flex-row justify-center items-center sm:items-stretch gap-6">
                 {members.slice(0, 3).map((member, index) =>
                   renderCard(member, index, "w-[260px] shrink-0")
                 )}
               </div>
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+              <div className="flex flex-col sm:flex-row justify-center items-center sm:items-stretch gap-6">
                 {members.slice(3).map((member, index) =>
                   renderCard(member, index + 3, "w-[260px] shrink-0")
                 )}
@@ -244,7 +246,7 @@ export default function CommitteeSection() {
             <motion.div
               key={activeTab}
               layout
-              className="mx-auto w-full flex flex-col sm:flex-row items-center justify-center gap-6"
+              className="mx-auto w-full flex flex-col sm:flex-row items-center sm:items-stretch justify-center gap-6"
             >
               {members.map((member, index) =>
                 renderCard(member, index, "w-full max-w-xs")
