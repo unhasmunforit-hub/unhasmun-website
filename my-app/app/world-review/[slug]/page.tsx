@@ -149,7 +149,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                         <div className="mb-10 md:mb-14">
                             {article.mainImage.imageDescription.split("\n\n").map((paragraph: string, i: number) => (
                                 paragraph.trim() && (
-                                    <p key={`main-${i}`} className="text-left leading-relaxed mb-6 text-[15px] md:text-[16px]" style={{ textAlign: "left", fontStyle: "normal" }}>
+                                    <p key={`main-${i}`} className="leading-relaxed mb-6 text-[15px] md:text-[16px]" style={{ textAlign: "justify", fontStyle: "normal" }}>
                                         {paragraph.trim()}
                                     </p>
                                 )
@@ -176,7 +176,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                         <div className="mb-10 md:mb-14">
                             {article.secImage.imageDescription.split("\n\n").map((paragraph: string, i: number) => (
                                 paragraph.trim() && (
-                                    <p key={`sec-${i}`} className="text-left leading-relaxed mb-6 text-[15px] md:text-[16px]" style={{ textAlign: "left", fontStyle: "normal" }}>
+                                    <p key={`sec-${i}`} className="leading-relaxed mb-6 text-[15px] md:text-[16px]" style={{ textAlign: "justify", fontStyle: "normal" }}>
                                         {paragraph.trim()}
                                     </p>
                                 )
@@ -203,7 +203,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
                         <div className="mb-10 md:mb-14">
                             {article.thirdImage.imageDescription.split("\n\n").map((paragraph: string, i: number) => (
                                 paragraph.trim() && (
-                                    <p key={`third-${i}`} className="text-left leading-relaxed mb-6 text-[15px] md:text-[16px]" style={{ textAlign: "left", fontStyle: "normal" }}>
+                                    <p key={`third-${i}`} className="leading-relaxed mb-6 text-[15px] md:text-[16px]" style={{ textAlign: "justify", fontStyle: "normal" }}>
                                         {paragraph.trim()}
                                     </p>
                                 )
