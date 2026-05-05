@@ -56,17 +56,17 @@ const committeeData: Record<Category, Member[]> = {
   "SMG": [
     {
       name: "Muhammad Aflahal Mukmin",
-      position: "SMG",
+      position: "Senior Management Group",
       image: "/about/commitee/Muhammad Aflahal Mukmin.webp",
     },
     {
       name: "Zadrach Barenz Windessy",
-      position: "SMG",
+      position: "Senior Management Group",
       image: "/about/commitee/Zadrach Barenz Windessy.webp",
     },
     {
       name: "Indhie Rina Tamandalan",
-      position: "SMG",
+      position: "Senior Management Group",
       image: "/about/commitee/Indhie Rina Tamandalan.webp",
     },
   ],
