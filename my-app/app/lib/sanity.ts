@@ -1,6 +1,5 @@
 import { createClient } from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
-// No explicit SanityImageSource type needed here to avoid import errors
+import { createImageUrlBuilder } from "@sanity/image-url";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
@@ -19,12 +18,12 @@ export const sanityClient = createClient({
     useCdn: false,
     token: process.env.SANITY_API_READ_TOKEN, // Needed for draft fetching
     stega: {
-        enabled: true,
-        studioUrl: "http://localhost:3333",
+        enabled: process.env.NEXT_PUBLIC_VERCEL_ENV === "preview",
+        studioUrl: "/studio",
     },
 });
 
-const builder = imageUrlBuilder(sanityClient);
+const builder = createImageUrlBuilder(sanityClient);
 
 export function urlFor(source: any) {
     return builder.image(source);

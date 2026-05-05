@@ -91,8 +91,8 @@ export default async function WorldReviewPage() {
                             Coming Soon
                         </h2>
                         <p className="text-mun-dark/70 max-w-md mx-auto">
-                            Articles and reviews will be published here as we approach UNHAS MUN 2026.
-                            Stay tuned for insights on global affairs and international diplomacy.
+                            Articles and reviews will be published as soon as possible.
+                            Stay tuned for newest updates!.
                         </p>
                     </div>
                 )}

@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { VisualEditing } from "next-sanity/visual-editing";
+import { draftMode } from "next/headers";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -42,13 +44,13 @@ export const metadata: Metadata = {
   },
 };
 
-import { VisualEditing } from "next-sanity/visual-editing";
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { isEnabled } = await draftMode();
+
   return (
     <html lang="en">
       <body
@@ -61,7 +63,7 @@ export default function RootLayout({
         <Footer />
         <Analytics />
         <SpeedInsights />
-        <VisualEditing />
+        {isEnabled && <VisualEditing />}
       </body>
     </html>
   );
