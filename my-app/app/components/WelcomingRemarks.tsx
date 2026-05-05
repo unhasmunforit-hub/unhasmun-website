@@ -15,6 +15,8 @@ const remarks = {
     "Inspired by the spirit of the United Nations, we build our community on how we carry ourselves and how we treat others. We value maturity and responsibility in every role we take. We choose to bring positive energy into the space we share. We stay open to learning, change, and new experiences. And we believe growth happens best when people connect and work together.",
     "This website is simply a window into who we are and what we continue to build. Here you can get to know our journey, our purpose, and the people behind this community. Thank you for being here and taking the time to know about Unhas MUN Student Activity!",
     "Best Regards,",
+    "Jacinta Arkana Shafiqah Jasman",
+    "Secretary-General Unhas MUN 2026",
   ],
 };
 
@@ -83,15 +85,24 @@ export default function WelcomingRemarks() {
 
             {/* Letter body */}
             <div style={s.letter as React.CSSProperties} className="wr-letter">
-              {remarks.letter.map((para, i) => (
-                <p
-                  key={i}
-                  style={i === 0 ? s.greeting as React.CSSProperties : s.para as React.CSSProperties}
-                  className={i === 0 ? "wr-greeting" : "wr-para"}
-                >
-                  {para}
-                </p>
-              ))}
+              {remarks.letter.map((para, i) => {
+                const isSignature = i >= remarks.letter.length - 3;
+                const style = i === 0
+                  ? s.greeting as React.CSSProperties
+                  : isSignature
+                    ? s.signature as React.CSSProperties
+                    : s.para as React.CSSProperties;
+                const className = i === 0
+                  ? "wr-greeting"
+                  : isSignature
+                    ? "wr-signature"
+                    : "wr-para";
+                return (
+                  <p key={i} style={style} className={className}>
+                    {para}
+                  </p>
+                );
+              })}
             </div>
 
           </div>
@@ -244,5 +255,12 @@ const s = {
     margin: "0 0 14px",
     lineHeight: 1.85,
     textAlign: "justify",
+  },
+  signature: {
+    fontSize: "13px",
+    color: "rgba(255,255,255,0.85)",
+    margin: "0 0 4px",
+    lineHeight: 1.55,
+    fontWeight: 500,
   },
 };
