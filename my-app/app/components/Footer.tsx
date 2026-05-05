@@ -38,7 +38,7 @@ export default function Footer() {
 
           {/* LinkedIn */}
           <a
-            href="https://linkedin.com/company/unhasmun"
+            href="https://www.linkedin.com/in/unhas-model-united-nations-183a40217/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
