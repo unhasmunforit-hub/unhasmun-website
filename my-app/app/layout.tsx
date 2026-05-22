@@ -18,10 +18,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://unhasmun.com"),
   title: "UNHAS MUN 2026",
   description: "University of Hasanuddin Model United Nations 2026 - Shape the future behind the table",
-  icons: {
-    icon: "/main-logo.webp",
-    apple: "/main-logo.webp",
-  },
   openGraph: {
     title: "UNHAS MUN 2026",
     description: "University of Hasanuddin Model United Nations 2026 - Shape the future behind the table",
