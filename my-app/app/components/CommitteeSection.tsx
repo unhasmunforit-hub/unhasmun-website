@@ -100,9 +100,10 @@ const committeeData: Record<Category, Member[]> = {
 };
 
 // USG committee member lists
-const usgMemberData: Record<string, { title: string; members: string[] }> = {
+const usgMemberData: Record<string, { title: string; description: string; members: string[] }> = {
   "Fathiyah Salsabilla": {
-    title: "General Assembly Members",
+    title: "USG General Assembly",
+    description: "USG General Assembly plays an important role in developing members' academic and practical skills in Model United Nations. Also manages programs that prepare members to understand MUN procedures, improve public speaking, diplomacy, negotiation, and critical thinking skills, as well as gain real conference experience. Through activities such as Open Recruitment, Regular Training, Regular Conference, Joint Simulation, Sending Delegates, and Makassar MUN, General Assembly also helps strengthen connections with other MUN communities and promotes the reputation of UNHAS MUN nationally and internationally.",
     members: [
       "Amru Bin Salahuddin", "Andi Gean Arifta Fawelau", "Andi Muh. Fabyan Abhipraya",
       "Faruq Syaifullah Shidiq", "Fhalinka Davina Fathunnisa", "Gie Marhaen Saili",
@@ -113,7 +114,8 @@ const usgMemberData: Record<string, { title: string; members: string[] }> = {
     ],
   },
   "Anisa Shafiqa Yusran": {
-    title: "Internal Oversight",
+    title: "USG Internal Oversight",
+    description: "Internal Oversight is a division responsible for maintaining the internal sustainability, coordination, and organizational climate within UNHASMUN. Its role focuses on ensuring that communication, collaboration, and organizational systems run effectively while supporting members' growth and engagement throughout the period of management. Also manages programs related to member development, internal bonding, information coordination, probation monitoring, and organizational appreciation. Through its programs, Internal Oversight acts as a bridge that connects members, maintains organizational dynamics, and supports the long-term sustainability of the organization internally.",
     members: [
       "Andi Atiqa Naira Ilham", "Aurelia Marlin Kattu Taula'bi", "Ethania Ebenheizer Picaulima",
       "Grace Agnes Dette", "Jaren Manuel Loardi", "Khumairah Sashkia Lashmana Agelsyah",
@@ -124,7 +126,8 @@ const usgMemberData: Record<string, { title: string; members: string[] }> = {
     ],
   },
   "Muh. Summary Arif Rusman": {
-    title: "Management & Research",
+    title: "USG Management & Research",
+    description: "Management and Research acts as the foundation that keeps the organization running smoothly and growing. This division focuses on three main areas to ensure long-term success. First, it handles the vital task of gathering and organizing the organization's data, ensuring that information is always accessible and well-managed. To support various projects, the team also leads fundraising programs that bring in the necessary financial resources to keep operations moving. Beyond the management, the division is dedicated to the intellectual growth of its members. Through its research initiatives, it provides a space for members to practice and improve their professional writing.",
     members: [
       "Ahmad Aisir Zotra", "Ahmad Haykal Ramly", "Aura Nur Allysha Prianti",
       "Brine Tiara Bella", "Eugenia Kana Daniela Timang Seran", "Hakam Auliya Shidqi",
@@ -135,7 +138,8 @@ const usgMemberData: Record<string, { title: string; members: string[] }> = {
     ],
   },
   "Aida Mufida Setiawan": {
-    title: "Public Information & Relations",
+    title: "USG Public Information & Relations",
+    description: "USG Public Information & Relations is a division responsible for managing design, publication, and networking to strengthen the organization's branding and external relations. Through its working programs such as UNHAS MUN Charity, Seminar, Design & Documentation, MUN Clips, Networking, Maintaining Web, and MUN Bites, USG PIR supports the organization by creating engaging content, promoting activities, maintaining partnerships, and ensuring effective communication with the public.",
     members: [
       "Andi Fatimah Nuareni Ramadhana A.", "Andi Muh. Guttu Patalo Zulkarnain", "Balqis Anastasya",
       "Christofer Billy Saputra Wijayanto", "Devina Arlianti Bahar", "Elvia Nandini Azalia",
@@ -149,7 +153,7 @@ const usgMemberData: Record<string, { title: string; members: string[] }> = {
 
 export default function CommitteeSection() {
   const [activeTab, setActiveTab] = useState<Category>("Executive Board");
-  const [popupData, setPopupData] = useState<{ title: string; members: string[] } | null>(null);
+  const [popupData, setPopupData] = useState<{ title: string; description: string; members: string[] } | null>(null);
   const members = committeeData[activeTab];
 
   const renderCard = (member: Member, index: number, extraClass = "") => {
@@ -275,13 +279,13 @@ export default function CommitteeSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative bg-mun-cream border-2 border-mun-red/20 rounded-2xl p-8 max-w-lg w-full shadow-2xl"
+              className="relative bg-mun-cream border-2 border-mun-red/20 rounded-2xl p-8 max-w-lg w-full shadow-2xl max-h-[85vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close button */}
               <button
                 onClick={() => setPopupData(null)}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-mun-red flex items-center justify-center text-white hover:bg-red-700 transition-colors"
+                className="sticky top-0 float-right w-8 h-8 rounded-full bg-mun-red flex items-center justify-center text-white hover:bg-red-700 transition-colors z-10"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -289,9 +293,22 @@ export default function CommitteeSection() {
               </button>
 
               {/* Title */}
-              <h3 className="text-xl font-bold text-mun-dark text-center mb-6">
+              <h3 className="text-xl font-bold text-mun-dark text-center mb-4 pr-10">
                 {popupData.title}
               </h3>
+
+              {/* Description */}
+              <p className="text-sm text-mun-dark/70 leading-relaxed mb-6" style={{ textAlign: "justify" }}>
+                {popupData.description}
+              </p>
+
+              {/* Divider */}
+              <div className="w-16 h-0.5 bg-mun-red/30 mx-auto mb-6" />
+
+              {/* Member list heading */}
+              <h4 className="text-sm font-bold text-mun-dark/60 text-center mb-4 uppercase tracking-wider">
+                Members
+              </h4>
 
               {/* Member names - split layout */}
               {(() => {
