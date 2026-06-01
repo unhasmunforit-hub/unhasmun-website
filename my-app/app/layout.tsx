@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: "UNHAS MUN 2026",
   description:
     "University of Hasanuddin Model United Nations 2026 - Shape the future behind the table",
+  verification: {
+    google: "0RJZeTJhvEv_GaFukywele-XFAg8ukDsXbb0rFb5TEE",
+  },
   alternates: {
     canonical: "/",
   },
