@@ -81,8 +81,8 @@ export default function MakassarMunPage() {
                             <h2 className="text-white font-bold text-lg sm:text-lg md:text-2xl lg:text-[26px] tracking-wide text-center uppercase">
                                 WIPO
                             </h2>
-                            <p className="text-white/80 text-sm sm:text-[15px] md:text-lg lg:text-[18px] text-center mt-1 sm:mt-2 leading-loose px-1 sm:px-2 italic">
-                                World Intellectual <br /> Property Organization
+                            <p className="text-white/80 text-[10px] sm:text-[11px] md:text-[13px] lg:text-[14px] text-center mt-1 sm:mt-2 leading-snug px-2 sm:px-3 md:px-4 italic">
+                                "Strengthening Traditional Cultural Expressions Towards International Copyright and Protection Standards"
                             </p>
                             <button
                                 onClick={() =>
@@ -108,8 +108,8 @@ export default function MakassarMunPage() {
                             <h2 className="text-white font-bold text-lg sm:text-lg md:text-2xl lg:text-[26px] tracking-wide text-center uppercase">
                                 UNHRC
                             </h2>
-                            <p className="text-white/80 text-sm sm:text-[15px] md:text-lg lg:text-[18px] text-center mt-1 sm:mt-2 leading-loose px-1 sm:px-2 italic">
-                                United Nations <br /> Human Rights Council
+                            <p className="text-white/80 text-[10px] sm:text-[11px] md:text-[13px] lg:text-[14px] text-center mt-1 sm:mt-2 leading-snug px-2 sm:px-3 md:px-4 italic">
+                                "Ensuring the Protection of Women with Disabilities from Intersecting Discrimination"
                             </p>
                             <button
                                 onClick={() =>
@@ -135,8 +135,8 @@ export default function MakassarMunPage() {
                             <h2 className="text-white font-bold text-lg sm:text-lg md:text-2xl lg:text-[26px] tracking-wide text-center uppercase">
                                 CCPCJ
                             </h2>
-                            <p className="text-white/80 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[17px] text-center mt-1 sm:mt-2 leading-loose px-1 sm:px-2 italic">
-                                The Commission on Crime <br /> Prevention and Criminal Justice
+                            <p className="text-white/80 text-[10px] sm:text-[11px] md:text-[13px] lg:text-[14px] text-center mt-1 sm:mt-2 leading-snug px-2 sm:px-3 md:px-4 italic">
+                                "Strengthening International Cooperation to Combat Illegal Mining and Illicit Mineral Trafficking by Transnational Criminal Organizations"
                             </p>
                             <button
                                 onClick={() =>
@@ -162,8 +162,8 @@ export default function MakassarMunPage() {
                             <h2 className="text-white font-bold text-lg sm:text-lg md:text-2xl lg:text-[26px] tracking-wide text-center uppercase">
                                 G20
                             </h2>
-                            <p className="text-white/80 text-sm sm:text-[15px] md:text-lg lg:text-[18px] text-center mt-1 sm:mt-2 leading-loose px-1 sm:px-2 italic">
-                                Group of 20
+                            <p className="text-white/80 text-[10px] sm:text-[11px] md:text-[13px] lg:text-[14px] text-center mt-1 sm:mt-2 leading-snug px-2 sm:px-3 md:px-4 italic">
+                                "Reforming Global Debt Architecture to Support Sustainable Growth in the Global South"
                             </p>
                             <button
                                 onClick={() =>
@@ -284,7 +284,7 @@ export default function MakassarMunPage() {
                                         {selectedCommittee.name}
                                     </h3>
                                     <p className="text-white/80 text-[10px] sm:text-[15px] text-center mt-0.5 sm:mt-1 max-w-[200px] leading-loose whitespace-pre-line italic">
-                                        {selectedCommittee.fullName}
+                                        &quot;{selectedCommittee.fullName}&quot;
                                     </p>
                                 </div>
  
