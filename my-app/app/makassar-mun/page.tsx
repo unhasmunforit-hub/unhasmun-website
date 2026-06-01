@@ -13,7 +13,7 @@ interface CommitteeInfo {
 const committeeDetails: CommitteeInfo[] = [
     {
         name: "WIPO",
-        fullName: "World Intellectual\nProperty Organization",
+        fullName: "Strengthening Traditional Cultural Expressions Towards International Copyright and Protection Standards",
         description:
             "World Intellectual Property Organization (WIPO) Step into the spotlight with our chosen council for Makassar MUN: the World Intellectual Property Organization (WIPO)! Perfectly echoing our Grand Theme, \"Recognize, Navigate, Balance: Building Consensus in a Diverse World of I La Galigo,\" WIPO stands as the ultimate international arena for delegates to champion the rights of indigenous communities. In a modern era where local heritage is increasingly vulnerable to cross-border commercial exploitation, the urgency to fortify our international legal frameworks has never been greater. On this dynamic stage, delegates are challenged to genuinely recognize the intellectual property rights of local creators, deftly navigate the complex tug-of-war between legal protection and global economic interests, and strike a crucial balance to ensure that rapid digitalization empowers, rather than erases, the authentic voices of our diverse world.",
         topicDescription:
@@ -21,7 +21,7 @@ const committeeDetails: CommitteeInfo[] = [
     },
     {
         name: "UNHRC",
-        fullName: "United Nations\nHuman Rights Council",
+        fullName: "Ensuring the Protection of Women with Disabilities from Intersecting Discrimination",
         description:
             "United Nations Human Rights Council (UNHRC) Take your place at the forefront of global justice with our designated council for Makassar MUN: the United Nations Human Rights Council (UNHRC)! Seamlessly embodying our Grand Theme, \"Recognize, Navigate, Balance: Building Consensus in a Diverse World of I La Galigo,\" the UNHRC operates as the ultimate diplomatic battlefield for safeguarding human dignity. In an increasingly fragmented world where systemic inequalities threaten the safety of marginalized populations, the demand for resilient international human rights frameworks is at an all-time high. Within these historic walls, delegates are called upon to authentically recognize the lived realities of vulnerable communities, skillfully navigate the intense diplomatic friction between state sovereignty and universal liberties, and strike a vital balance to ensure that global policies uplift rather than overlook the diverse voices of our shared humanity.",
         topicDescription:
@@ -29,7 +29,7 @@ const committeeDetails: CommitteeInfo[] = [
     },
     {
         name: "CCPCJ",
-        fullName: "The Commission on Crime\nPrevention and Criminal Justice",
+        fullName: "Strengthening International Cooperation to Combat Illegal Mining and Illicit Mineral Trafficking by Transnational Criminal Organizations",
         description:
             "The Commission on Crime Prevention and Criminal Justice (CCPCJ) Step into the epicenter of global law enforcement with our designated council for Makassar MUN: the CCPCJ! Flawlessly reflecting our Grand Theme, \"Recognize, Navigate, Balance: Building Consensus in a Diverse World of I La Galigo,\" the CCPCJ stands as the ultimate diplomatic arena for dismantling global illicit networks. In an era where highly sophisticated syndicates exploit borders and threaten international stability, the need for robust, unified criminal justice frameworks has never been more critical. Within this core commission of ECOSOC, delegates are challenged to authentically recognize the complex web of transnational crimes, skillfully navigate the intense jurisdictional friction between sovereign states and international law, and strike a crucial balance to forge sweeping policies that protect the integrity of our shared global governance.",
         topicDescription:
@@ -37,7 +37,7 @@ const committeeDetails: CommitteeInfo[] = [
     },
     {
         name: "G20",
-        fullName: "Group of 20",
+        fullName: "Reforming Global Debt Architecture to Support Sustainable Growth in the Global South",
         description:
             "Brace yourselves to step into the ultimate arena where the future of the global economy is forged as we proudly present the G20 Finance Track! This council was specifically chosen for its absolutely crucial role in steering how international financial systems respond to the severe debt distress hitting developing nations right now. The urgency of this council is incredibly real today because global financial stability demands powerful policy coordination built purely on consensus rather than mere voting. This choice resonates flawlessly with our Maksmun 2026 Grand Theme of \"Recognize, Navigate, Balance\" since delegates will be intellectually pushed to recognize diverse economic perspectives, navigate the immense complexities of global governance, and balance conflicting views to build meaningful agreements in a highly challenging world.",
         topicDescription:
